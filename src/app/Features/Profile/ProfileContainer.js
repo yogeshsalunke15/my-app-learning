@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import ProfileInfo from './Profile';
 import { updateUser } from '../Users/userSlice';
 
+// Container component(business logic and state transformation is done here)
 const mapStateToProps = state => {
     return state.users;
   };
