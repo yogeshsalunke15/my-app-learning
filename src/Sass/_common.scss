@@ -1,0 +1,25 @@
+
+$color: 'white';
+$fontSize: 14px;
+$fontFamily: 'sans-serif';
+
+@mixin theme($theme: DarkGray, $color: white) {
+    background: $theme !important;
+    color:$color;
+}
+
+.bground {
+    //Mixins 
+    @include theme($theme: #c30b2e);
+    font-family: $fontFamily;
+    font-size: $fontSize;
+}
+
+// Extend/Inheritance
+%base-style {
+    padding:10px;
+    margin:4px;
+    border:2px solid yellowgreen;
+    border-radius: 25%;
+    font-weight: bold;
+}

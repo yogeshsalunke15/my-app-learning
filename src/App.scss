@@ -1,0 +1,21 @@
+// @use './Sass/common';
+@use './Sass/common' as *; //importing mixins, variables and functions from partial
+
+.App {
+  text-align: center;
+  background-color: bisque;
+}
+
+/*
+* Css Nesting as per HTML DOM Hierarchy
+*/
+.bground {
+
+  button {
+    @include theme($theme: #e92626, $color: #fff);
+    @extend %base-style;
+    font-size: $fontSize + 6;
+   // font-size: common.$fontSize + 6;
+  }
+
+}
