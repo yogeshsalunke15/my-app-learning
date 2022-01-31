@@ -1,6 +1,7 @@
 
 import React from "react";
 
+// This pattern is called : Presenational component (only UI)
 function ProfileInfo(props) {
 
         return(
