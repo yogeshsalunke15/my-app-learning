@@ -36,7 +36,7 @@ const CustomHooks = (props) => {
      */
      useEffect(() => {
          document.title = `${user.name} at age ${user.age} from ${user.location} with count as ${count}`;
-     }, [count]);
+     }, [user, count]);
 
     // with unsubscription
      useEffect(() => {
@@ -51,7 +51,7 @@ const CustomHooks = (props) => {
             clearInterval(customInterval);
         }
 
-     }, []);
+     }, [props]);
 
     const updateCounter = () => {
         console.log(user);

@@ -6,7 +6,7 @@ import './App.scss';
 import MouseTracker from './Components/RenderProps/MouseTracker';
 import CustomHooks from './Components/Hooks/Hooks';
 import AddUsers from './app/Features/Users/addUsers';
-import ProfileInfo from './app/Features/Profile/Profile';
+import { ProfileContainer } from './app/Features/Profile/ProfileContainer';
 //lazy loading component 
 const Events = lazy(() => import('./Components/Events/Events'));
 
@@ -87,7 +87,7 @@ function App() {
       </CustomPortal>
       <CustomHooks unsubscribingEffect={unsubscribingEffect} /> <br/><br/>
       <AddUsers /><br/><br/>
-      <ProfileInfo />
+      <ProfileContainer />
       </div>
      // </Profiler>
     );

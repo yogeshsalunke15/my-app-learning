@@ -18,10 +18,7 @@ export const userSlice = createSlice({
     },
     updateUser: (state, action) => {
         return {...state, user: action.payload };
-    },
-    incrementByAmount: (state, action) => {
-      state.value += action.payload;
-    },
+    }
   }
 });
 
