@@ -7,6 +7,8 @@ import MouseTracker from './Components/RenderProps/MouseTracker';
 import CustomHooks from './Components/Hooks/Hooks';
 import AddUsers from './app/Features/Users/addUsers';
 import { ProfileContainer } from './app/Features/Profile/ProfileContainer';
+import HOC from './Components/HigherOrderComponent/HOC';
+
 //lazy loading component 
 const Events = lazy(() => import('./Components/Events/Events'));
 
@@ -88,6 +90,7 @@ function App() {
       <CustomHooks unsubscribingEffect={unsubscribingEffect} /> <br/><br/>
       <AddUsers /><br/><br/>
       <ProfileContainer />
+      <HOC></HOC>
       </div>
      // </Profiler>
     );
