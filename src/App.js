@@ -1,4 +1,5 @@
 import React, { lazy, Profiler, Suspense} from 'react';
+import { Routes, Link, Route, Outlet } from 'react-router-dom';
 
 import CustomContext from './Components/Context/Context';
 import CustomPortal from './Components/Portals/Portal';
@@ -65,8 +66,18 @@ function App() {
       // <Profiler id="appProfiler" onRender={profilerCalled}>
       <div className="App bground">
       <h1> Hello, {formatUser(user)} !</h1>
+        <div>
+          <Routes>
+            <Route path="/" element={<Layout />}>
+              <Route exact path="/timer" element={<Timer />} ></Route>
+              <Route path='/mouse' element={<MouseTracker />}></Route>
+              <Route path='/state' element={ <StateManagment />}></Route>
+              <Route path='/add-user' element={ <AddUsers />}></Route>
+              <Route path="*" element={<NotFound />} />
+            </Route>
+          </Routes>
+        </div>
       {/* <button onClick={buttonClicked}> Click me !</button><br/><br/> */}
-      <Timer />
       {/* <Welcome name="Yogesh" />
       <Comment user={reader} /> */}
       <Suspense fallback={<div>Loading...</div>}>
@@ -79,10 +90,8 @@ function App() {
           </div>
         </Events>
       </Suspense><br/><br/>
-      <StateManagment />
-     <MouseTracker />
       <br/><br/>
-      <Clock /><br/><br/>
+      {/* <Clock /><br/><br/> */}
       <List /><br/><br/>
       <ControlledForms />
       <Composition left={<Clock />} right={<Clock />} /> <br/>
@@ -93,7 +102,6 @@ function App() {
         </> { /*short syntax of using Fragment */ }
       </CustomPortal>
       <CustomHooks unsubscribingEffect={unsubscribingEffect} /> <br/><br/>
-      <AddUsers /><br/><br/>
       <ProfileContainer />
       <HOC></HOC>
       </div>
@@ -304,6 +312,44 @@ class Comment extends React.Component {
     return <ForwardRefComponent />
   })
 
+  function Layout() {
+    return (
+      <div>
+        {/* A "layout route" is a good place to put markup you want to
+            share across all the pages on your site, like navigation. */}
+        <nav>
+          <ul>
+            <li>
+              <Link to="/">Home</Link>
+            </li>
+            <li>
+              <Link to="/timer">Timer</Link>
+            </li>
+            <li>
+              <Link to="/state">State Managment</Link>
+            </li>
+            <li>
+              <Link to="/mouse">Mouse Tracker</Link>
+            </li>
+            <li>
+              <Link to="/add-user">Add user to State </Link>
+            </li>
+          </ul>
+        </nav>
+  
+  
+        {/* An <Outlet> renders whatever child route is currently active,
+            so you can think about this <Outlet> as a placeholder for
+            the child routes we defined above. */}
+        <Outlet />
+      </div>
+    );
+  }
+  const NotFound = () => {
+    return(<>
+      <div> 404 - Not found any page of specified Name</div>
+    </>);
+  }
 
 export default App;
 
