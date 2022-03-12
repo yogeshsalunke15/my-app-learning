@@ -11,6 +11,7 @@ import { ProfileContainer } from './app/Features/Profile/ProfileContainer';
 import HOC from './Components/HigherOrderComponent/HOC';
 import StateManagment from './Components/StateManagement/StateManagement';
 import Timer from './Components/Events/Timer';
+import FormHandeling from './Components/Forms/FormHandeling';
 
 //lazy loading component 
 const eventComponent = import('./Components/Events/Events');
@@ -72,6 +73,7 @@ function App() {
               <Route exact path="/timer" element={<Timer />} ></Route>
               <Route path='/mouse' element={<MouseTracker />}></Route>
               <Route path='/state' element={ <StateManagment />}></Route>
+              <Route path='/form' element={ <FormHandeling />}></Route>
               <Route path='/add-user' element={ <AddUsers />}></Route>
               <Route path="*" element={<NotFound />} />
             </Route>
@@ -333,6 +335,9 @@ class Comment extends React.Component {
             </li>
             <li>
               <Link to="/add-user">Add user to State </Link>
+            </li>
+            <li>
+              <Link to="/form">Form Handeling</Link>
             </li>
           </ul>
         </nav>
