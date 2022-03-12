@@ -23,8 +23,8 @@ describe('Event Component ', () => {
         act(() => {
             ReactDOM.render(<Events  />, container);
         });
-        //const button = container.querySelector('button');
-        const button = React.findDOMNode('button');
+        const button = container.querySelector('button');
+        //const button = React.findDOMNode('button');
         expect(button.textContent).toBe('ON');
     });
 

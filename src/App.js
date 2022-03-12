@@ -8,9 +8,12 @@ import CustomHooks from './Components/Hooks/Hooks';
 import AddUsers from './app/Features/Users/addUsers';
 import { ProfileContainer } from './app/Features/Profile/ProfileContainer';
 import HOC from './Components/HigherOrderComponent/HOC';
+import StateManagment from './Components/StateManagement/StateManagement';
+import Timer from './Components/Events/Timer';
 
 //lazy loading component 
-const Events = lazy(() => import('./Components/Events/Events'));
+const eventComponent = import('./Components/Events/Events');
+const Events = lazy(() => eventComponent);
 
 function App() {
   const user = {
@@ -25,11 +28,11 @@ function App() {
   }
 
   const buttonClicked = () =>{
-    alert("buton clicked !");
+    //alert("buton clicked !");
   };
  
   const eventToggle = (val) =>{
-    alert("Value from Child to Parent ->"+val);
+   // alert("Value from Child to Parent ->"+val);
   };
 
   const reader = {
@@ -42,7 +45,7 @@ function App() {
   };
 
   function unsubscribingEffect() {
-    alert('Unsubscribing the effect');
+    //alert('Unsubscribing the effect');
   }
   
   const profilerCalled = (id, phase, actualDuration, baseDuration, startTime, commitTime, interactions) =>{
@@ -62,7 +65,8 @@ function App() {
       // <Profiler id="appProfiler" onRender={profilerCalled}>
       <div className="App bground">
       <h1> Hello, {formatUser(user)} !</h1>
-      <button onClick={buttonClicked}> Click me !</button><br/><br/>
+      {/* <button onClick={buttonClicked}> Click me !</button><br/><br/> */}
+      <Timer />
       {/* <Welcome name="Yogesh" />
       <Comment user={reader} /> */}
       <Suspense fallback={<div>Loading...</div>}>
@@ -75,6 +79,7 @@ function App() {
           </div>
         </Events>
       </Suspense><br/><br/>
+      <StateManagment />
      <MouseTracker />
       <br/><br/>
       <Clock /><br/><br/>
@@ -145,7 +150,7 @@ class Comment extends React.Component {
     componentDidMount() {
       this.timerID = setInterval(()=> this.tick(), 1000);
     }
-    componentWillUnmount(){ alert("Clearing Clock component from DOM !");
+    componentWillUnmount(){ //alert("Clearing Clock component from DOM !");
       clearInterval(this.timerID);
     }
 
@@ -154,7 +159,7 @@ class Comment extends React.Component {
         date: new Date()
       });
 
-     this.setState((state) => {return this.state = {date: new Date() }});
+     this.setState(() => {return this.state = {date: new Date() }});
     }
     userLoggedIn = () => {
       this.setState({isLoggedIn: true});
@@ -206,7 +211,7 @@ class Comment extends React.Component {
     constructor() {
       super();
       this.state = {
-        value: '',
+        selectedFruit: 'placeholder right now',
         dropdown: 'coconut'
       };
       this.handleSubmit = this.handleSubmit.bind(this);
@@ -215,11 +220,12 @@ class Comment extends React.Component {
     handleSubmit(event) {
       event.preventDefault();
       console.log(event.target.fruit.value);
+      //this.setState({selectedFruit: event.target.value});
     }
 
     handleChange(event){
       console.log(event.target.value);
-      this.setState({value: event.target.value});
+      this.setState({selectedFruit: event.target.value});
     }
 
     render() {
@@ -227,7 +233,7 @@ class Comment extends React.Component {
         <form onSubmit={this.handleSubmit}>
         <label>
           Name:
-          <input name="userName" type="text" value={this.state.value} onChange={this.handleChange.bind(this)} />
+          <input name="userName" type="text" value={this.state.selectedFruit} />
         </label><br/>
         <select defaultValue={this.state.dropdown} onChange={this.handleChange.bind(this)} name='fruit'>
             <option value="grapefruit">Grapefruit</option>

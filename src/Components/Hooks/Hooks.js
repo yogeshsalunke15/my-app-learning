@@ -47,14 +47,14 @@ const CustomHooks = (props) => {
         console.log(props);
         // unsubscribing from interval
         return () => { console.log('Unsubscribing the interval --!');
-        props.unsubscribingEffect();
+            props.unsubscribingEffect();
             clearInterval(customInterval);
         }
 
      }, [props]);
 
     const updateCounter = () => {
-        console.log(user);
+        console.log(count, '------counter ------');
         setCount(count + 1);
         updatedUser(prevUser => { return {...prevUser, hobies: 'Travelling, ganapati Dancing --'+ count}});
     }

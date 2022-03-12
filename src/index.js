@@ -19,3 +19,13 @@ ReactDOM.render(
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
+
+// Call API every 5 seconds
+
+// setTimeout(async function syncData() {
+//   const response = await fetch('https://api.github.com/users/timmywheels/repos');
+//   const data = await response.json();
+//   console.log(data);
+//   console.log(new Date().getSeconds());
+//   setTimeout(syncData,5000);
+// }, 0);
